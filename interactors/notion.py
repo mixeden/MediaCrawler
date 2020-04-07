@@ -21,6 +21,9 @@ class NotionInteractor:
         for row in current_rows:
             url = row.link
 
+            if "http" not in url:
+                url = "https://" + url
+
             parsed_uri = urlparse(url)
             result = ChromeInteractor.clear_url('{uri.netloc}/'.format(uri=parsed_uri))
 
